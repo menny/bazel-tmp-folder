@@ -1,0 +1,7 @@
+build --incompatible_strict_action_env
+build --sandbox_tmpfs_path=/tmp1
+test --test_tmpdir=/tmp1
+build --action_env=TMP=/tmp1 --action_env=TEMP=/tmp1 --action_env=TMPDIR=/tmp1
+
+build --java_runtime_version=remotejdk_11
+build --java_language_version=8

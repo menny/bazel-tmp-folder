@@ -1,0 +1,20 @@
+java_binary(
+    name = "env_builder_java",
+    srcs = ["EnvGenerator.java"],
+    args = ["env_java.txt"],
+    main_class = "testing.EnvGenerator",
+    visibility = ["//visibility:public"],
+)
+
+genrule(
+    name = "env_builder_cmd",
+    srcs = [],
+    outs = ["env_cmd.txt"],
+    cmd = """
+env > $@
+echo "mktemp is $$(mktemp)" >> $@
+""",
+    executable = False,
+    local = True,
+    visibility = ["//visibility:public"],
+)
